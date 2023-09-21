@@ -76,7 +76,7 @@ async def websocket_endpoint(websocket: WebSocket):
             # TODO handle this?
             break
         except Exception as e:
-            logging.error(e)
+            logging.error(e, exc_info=True)
             resp = ChatResponse(
                 sender="bot",
                 message="Sorry, something went wrong. Try again.",
