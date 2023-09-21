@@ -3,11 +3,15 @@ import logging
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from fastapi.templating import Jinja2Templates
+
+import config
 from assistant.assistant_callback import StreamingLLMCallbackHandler
 from websockets.exceptions import ConnectionClosedOK
 from assistant.assistant import get_chain
 
 from models.chat_response import ChatResponse
+from models.chat_message_in import ChatIn
+from util.validate_recaptcha import is_recaptcha_valid
 
 # Load the environment variables from the .env file
 load_dotenv()
@@ -39,8 +43,18 @@ async def websocket_endpoint(websocket: WebSocket):
     while True:
         try:
             # Receive and send back the client message
-            user_msg = await websocket.receive_text()
-            resp = ChatResponse(sender="human", message=user_msg, type="stream")
+            user_msg_string = await websocket.receive_text()
+            chat_message = ChatIn.model_validate_json(user_msg_string)
+
+            if config.config["PERSONAL_SITE_IS_DEVELOPMENT"] != "true":
+                # We are in deployment mode, check recaptcha
+                recaptcha_valid = await is_recaptcha_valid(chat_message.g_recaptcha_token, websocket.client.host)
+                if not recaptcha_valid:
+                    resp = ChatResponse(sender="bot", message="Recaptcha not valid, please try again", type="error")
+                    await websocket.send_json(resp.model_dump())
+                    continue
+
+            resp = ChatResponse(sender="human", message=chat_message.message, type="stream")
             await websocket.send_json(resp.model_dump())
 
             # Construct a response
@@ -48,11 +62,11 @@ async def websocket_endpoint(websocket: WebSocket):
             await websocket.send_json(start_resp.model_dump())
 
             # Send the message to the chain and feed the response back to the client
-            final_message = await qa_chain.arun(user_msg)
+            final_message = await qa_chain.arun(chat_message.message)
 
             # Send the end-response back to the client
             end_resp = ChatResponse(sender="bot", message=final_message, type="end")
-            await websocket.send_json(end_resp.dict())
+            await websocket.send_json(end_resp.model_dump())
         except WebSocketDisconnect:
             logging.info("WebSocketDisconnect")
             # TODO try to reconnect with back-off
@@ -68,4 +82,4 @@ async def websocket_endpoint(websocket: WebSocket):
                 message="Sorry, something went wrong. Try again.",
                 type="error",
             )
-            await websocket.send_json(resp.dict())
+            await websocket.send_json(resp.model_dump())
