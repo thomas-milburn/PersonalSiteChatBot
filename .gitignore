@@ -1,6 +1,1 @@
 .idea/
-context/context_data_creation/
-test.py
-.env.secret
-.env.local
-**/__pycache__/
