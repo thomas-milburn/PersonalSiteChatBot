@@ -5,7 +5,7 @@ from langchain.callbacks.manager import CallbackManagerForToolRun, AsyncCallback
 from langchain.tools import BaseTool
 from pydantic import BaseModel, Field
 
-with open("tools/university/modules.json") as f:
+with open("context/university_modules.json", "r") as f:
     all_modules = [
         {
             "code": module["code"],  # e.g. "COM1001
