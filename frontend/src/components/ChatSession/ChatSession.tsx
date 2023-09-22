@@ -2,13 +2,23 @@ import React, { useEffect, useRef } from 'react'
 import type ChatMessage from '../../types/ChatMessage'
 import ChatMessagesList from '../ChatMessagesList/ChatMessagesList'
 import SendMessageForm from '../SendMessageForm/SendMessageForm'
+import ReCAPTCHA from 'react-google-recaptcha'
+import './ChatSession.css'
 
 const ChatSession = (): React.ReactNode => {
   const [isWebsocketConnected, setWebsocketConnected] = React.useState<boolean>(false)
   const [isReceivingMessage, setReceivingMessage] = React.useState<boolean>(false)
+  const [isWaitingForRecaptcha, setWaitingForRecaptcha] = React.useState<boolean>(false)
   const [staticMessages, setStaticMessages] = React.useState<ChatMessage[]>([])
   const [incomingMessage, setIncomingMessage] = React.useState<string | undefined>(undefined)
+  const [sendMessageInputValue, setSendMessageInputValue] = React.useState<string>('')
+  const sendMessageInputValueRef = useRef<string>('')
   const websocketConnectionRef = useRef<WebSocket | undefined>(undefined)
+  const recaptchaRef = useRef<any>(undefined)
+
+  useEffect(() => {
+    sendMessageInputValueRef.current = sendMessageInputValue
+  }, [sendMessageInputValue])
 
   // Create websocket connection on create
   useEffect(() => {
@@ -48,24 +58,37 @@ const ChatSession = (): React.ReactNode => {
     }
   }, [])
 
-  const handleSendMessage = (message: string): void => {
+  const handleSendMessage = (): void => {
     if (!websocketConnectionRef.current) {
       return
     }
 
-    setStaticMessages((currentStaticMessages) => {
-      return [...currentStaticMessages, {
-        sender: 'human',
-        message,
-        type: 'end'
-      }]
-    })
+    setWaitingForRecaptcha(true)
+    recaptchaRef.current.execute()
+  }
 
+  const handleRecaptchaCallback = (token: string | null): void => {
+    if (!websocketConnectionRef.current) {
+      return
+    }
+
+    if (!token) {
+      return
+    }
+
+    if (!isWaitingForRecaptcha) {
+      return
+    }
+
+    recaptchaRef.current.reset()
+
+    setWaitingForRecaptcha(false)
     setReceivingMessage(true)
+    setSendMessageInputValue('')
 
     websocketConnectionRef.current?.send(JSON.stringify({
-      message,
-      g_recaptcha_token: ''
+      message: sendMessageInputValueRef.current,
+      g_recaptcha_token: token
     }))
   }
 
@@ -74,9 +97,19 @@ const ChatSession = (): React.ReactNode => {
       <ChatMessagesList staticMessages={staticMessages} incomingMessage={incomingMessage}/>
 
       <SendMessageForm
+        sendMessageInputValue={sendMessageInputValue}
+        setSendMessageInputValue={setSendMessageInputValue}
         isWebsocketConnected={isWebsocketConnected}
         isReceivingMessage={isReceivingMessage}
         onSendMessage={handleSendMessage}
+      />
+
+      <ReCAPTCHA
+        sitekey="6LeSKkMoAAAAALnqvmvI5yHABLbGYDueEmnsF9DH"
+        onChange={handleRecaptchaCallback}
+        size="invisible"
+        ref={recaptchaRef}
+        badge={'inline'}
       />
     </div>
   )

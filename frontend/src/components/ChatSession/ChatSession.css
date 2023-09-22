@@ -1,0 +1,5 @@
+.grecaptcha-badge {
+  /* This is allowed as we put terms and privacy on page */
+  /* See https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed */
+  visibility: hidden;
+}

@@ -48,6 +48,11 @@ async def websocket_endpoint(websocket: WebSocket):
                     continue
 
             # Construct a response
+            user_message_resp = ChatResponse(
+                sender="human", message=chat_message.message, type="end"
+            )
+            await websocket.send_json(user_message_resp.model_dump())
+
             start_resp = ChatResponse(sender="bot", message="", type="start")
             await websocket.send_json(start_resp.model_dump())
 

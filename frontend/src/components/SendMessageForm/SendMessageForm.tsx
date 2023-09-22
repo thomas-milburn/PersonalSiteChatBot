@@ -2,20 +2,21 @@ import React from 'react'
 import './SendMessageForm.css'
 
 interface Props {
+  sendMessageInputValue: string
+  setSendMessageInputValue: (value: string) => void
   isWebsocketConnected: boolean
   isReceivingMessage: boolean
   onSendMessage: (message: string) => void
 }
 
 const SendMessageForm = ({
+  sendMessageInputValue,
+  setSendMessageInputValue,
   isWebsocketConnected,
   isReceivingMessage,
   onSendMessage
 }: Props): React.ReactNode => {
-  const [sendMessageInputValue, setSendMessageInputValue] = React.useState<string>('')
-
   const handleSendMessage = (message: string): void => {
-    setSendMessageInputValue('')
     onSendMessage(message)
   }
 
