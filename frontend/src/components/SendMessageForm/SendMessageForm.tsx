@@ -1,4 +1,5 @@
 import React from 'react'
+import './SendMessageForm.css'
 
 interface Props {
   isWebsocketConnected: boolean
@@ -19,22 +20,30 @@ const SendMessageForm = ({
   }
 
   return (
-    <div>
-      <div>Send message</div>
+    <div className="send-message-form">
       <input
         type="text"
+        className="send-message-form__input"
         value={sendMessageInputValue}
         onChange={(event) => {
           setSendMessageInputValue(event.target.value)
         }}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter') {
+            handleSendMessage(sendMessageInputValue)
+          }
+        }
+        }
       />
       <button
         type="button"
+        className="send-message-form__button"
         onClick={() => {
           handleSendMessage(sendMessageInputValue)
         }}
         disabled={isReceivingMessage || !isWebsocketConnected || sendMessageInputValue === ''}
-      >Send
+      >
+        Send
       </button>
     </div>
   )

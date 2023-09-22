@@ -1,5 +1,6 @@
 import React from 'react'
 import type ChatMessage from '../../types/ChatMessage'
+import './BaseChatMessage.css'
 
 interface Props {
   message: ChatMessage
@@ -7,7 +8,7 @@ interface Props {
 
 const BaseChatMessage = ({ message }: Props): React.ReactNode => {
   return (
-    <div>
+    <div className="base-chat-message">
       {message.sender}: {message.message}
     </div>
   )
