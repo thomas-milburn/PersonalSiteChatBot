@@ -26,7 +26,7 @@ const ChatSession = (): React.ReactNode => {
         return
       }
 
-      if (message.type === 'end') {
+      if (['end', 'error', 'tool'].includes(message.type)) {
         setIncomingMessage(undefined)
         setReceivingMessage(false)
         setStaticMessages((currentStaticMessages) => {
