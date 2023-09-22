@@ -1,16 +1,16 @@
-import os
 import logging
+import os
+
 from dotenv import load_dotenv
-from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.templating import Jinja2Templates
+from websockets.exceptions import ConnectionClosedOK
 
 import config
-from assistant.assistant_callback import StreamingLLMCallbackHandler
-from websockets.exceptions import ConnectionClosedOK
 from assistant.assistant import get_chain
-
-from models.chat_response import ChatResponse
+from assistant.assistant_callback import StreamingLLMCallbackHandler
 from models.chat_message_in import ChatIn
+from models.chat_response import ChatResponse
 from util.validate_recaptcha import is_recaptcha_valid
 
 # Load the environment variables from the .env file
@@ -24,17 +24,7 @@ templates = Jinja2Templates(directory="templates")
 app = FastAPI()
 
 
-@app.get("/")
-async def index(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
-
-
-@app.get("/test")
-async def test_chat(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
-
-
-@app.websocket("/ws")
+@app.websocket("/chat")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     stream_handler = StreamingLLMCallbackHandler(websocket)
@@ -46,6 +36,9 @@ async def websocket_endpoint(websocket: WebSocket):
             user_msg_string = await websocket.receive_text()
             chat_message = ChatIn.model_validate_json(user_msg_string)
 
+            if chat_message.message == "":
+                continue
+
             if config.config["PERSONAL_SITE_IS_DEVELOPMENT"] != "true":
                 # We are in deployment mode, check recaptcha
                 recaptcha_valid = await is_recaptcha_valid(chat_message.g_recaptcha_token, websocket.client.host)
@@ -53,9 +46,6 @@ async def websocket_endpoint(websocket: WebSocket):
                     resp = ChatResponse(sender="bot", message="Recaptcha not valid, please try again", type="error")
                     await websocket.send_json(resp.model_dump())
                     continue
-
-            resp = ChatResponse(sender="human", message=chat_message.message, type="stream")
-            await websocket.send_json(resp.model_dump())
 
             # Construct a response
             start_resp = ChatResponse(sender="bot", message="", type="start")
