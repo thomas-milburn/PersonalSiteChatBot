@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import type ChatMessage from '../../types/ChatMessage'
-import BaseChatMessage from '../BaseChatMessage/BaseChatMessage'
-import IncomingChatMessage from '../IncomingChatMessage/IncomingChatMessage'
+import ChatMessagesList from '../ChatMessagesList/ChatMessagesList'
+import SendMessageForm from '../SendMessageForm/SendMessageForm'
 
 const ChatSession = (): React.ReactNode => {
   const [isWebsocketConnected, setWebsocketConnected] = React.useState<boolean>(false)
@@ -9,7 +9,6 @@ const ChatSession = (): React.ReactNode => {
   const [staticMessages, setStaticMessages] = React.useState<ChatMessage[]>([])
   const [incomingMessage, setIncomingMessage] = React.useState<string | undefined>(undefined)
   const websocketConnectionRef = useRef<WebSocket | undefined>(undefined)
-  const [sendMessageInputValue, setSendMessageInputValue] = React.useState<string>('')
 
   // Create websocket connection on create
   useEffect(() => {
@@ -49,7 +48,7 @@ const ChatSession = (): React.ReactNode => {
     }
   }, [])
 
-  const handleSendMessage = (message: string): undefined => {
+  const handleSendMessage = (message: string): void => {
     if (!websocketConnectionRef.current) {
       return
     }
@@ -62,7 +61,6 @@ const ChatSession = (): React.ReactNode => {
       }]
     })
 
-    setSendMessageInputValue('')
     setReceivingMessage(true)
 
     websocketConnectionRef.current?.send(JSON.stringify({
@@ -73,35 +71,13 @@ const ChatSession = (): React.ReactNode => {
 
   return (
     <div>
-      <div>Websocket connected: {isWebsocketConnected ? 'true' : 'false'}</div>
+      <ChatMessagesList staticMessages={staticMessages} incomingMessage={incomingMessage}/>
 
-      <div>
-        {staticMessages.map((message, index) => {
-          return (
-            <BaseChatMessage message={message} key={index}/>
-          )
-        })}
-        <IncomingChatMessage message={incomingMessage} />
-      </div>
-
-      <div>
-        <div>Send message</div>
-        <input
-          type="text"
-          value={sendMessageInputValue}
-          onChange={(event) => {
-            setSendMessageInputValue(event.target.value)
-          }}
-        />
-        <button
-          type="button"
-          onClick={() => {
-            handleSendMessage(sendMessageInputValue)
-          }}
-          disabled={isReceivingMessage || !isWebsocketConnected || sendMessageInputValue === ''}
-        >Send
-        </button>
-      </div>
+      <SendMessageForm
+        isWebsocketConnected={isWebsocketConnected}
+        isReceivingMessage={isReceivingMessage}
+        onSendMessage={handleSendMessage}
+      />
     </div>
   )
 }
