@@ -10,8 +10,10 @@ interface Props {
 const BaseChatMessage = ({ message }: Props): React.ReactNode => {
   return (
     <div className="base-chat-message">
-      {message.sender}
-      <ReactMarkdown linkTarget="_blank">{message.message}</ReactMarkdown>
+      <span className="base-chat-message__sender">
+        {message.sender === 'human' ? 'You' : 'Assistant'}
+      </span>
+      <ReactMarkdown className="base-chat-message__markup" linkTarget="_blank">{message.message}</ReactMarkdown>
     </div>
   )
 }

@@ -7,8 +7,24 @@
   width: 100%;
 
   color: white;
+  text-align: center;
 }
 
-.chat-introduction a {
-  color: #dcdde1
+.chat-introduction__section {
+  margin-bottom: 20px;
+}
+
+.chat-introduction__section.chat-introduction__section--gray {
+  color: #b3b3b3;
+  font-size: 12px;
+}
+
+.chat-introduction__section p {
+  margin: 0 0 10px 0;
+}
+
+.chat-introduction__photo_of_me {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
 }

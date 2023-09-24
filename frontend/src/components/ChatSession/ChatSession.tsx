@@ -109,7 +109,6 @@ const ChatSession = (): React.ReactNode => {
         onChange={handleRecaptchaCallback}
         size="invisible"
         ref={recaptchaRef}
-        badge={'inline'}
       />
     </div>
   )

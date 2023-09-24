@@ -12,7 +12,7 @@ from tools.github.get_read_me import GithubGetRepoReadMe
 from tools.university.university_modules import GetUniversityModules, GetUniversityModuleDescription
 
 with open("context/system_prompt.txt", "r") as f:
-    system_prompt = f.read()
+    system_prompt = f.read().strip()
 
 
 def get_chain(stream_handler) -> AgentExecutor:

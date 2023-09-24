@@ -58,6 +58,7 @@ async def websocket_endpoint(websocket: WebSocket):
 
             # Send the message to the chain and feed the response back to the client
             final_message = await qa_chain.arun(chat_message.message)
+            final_message = final_message.replace("A*", r"A\*")
 
             # Send the end-response back to the client
             end_resp = ChatResponse(sender="bot", message=final_message, type="end")
