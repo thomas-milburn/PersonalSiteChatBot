@@ -7,7 +7,7 @@ from fastapi.templating import Jinja2Templates
 from websockets.exceptions import ConnectionClosedOK
 
 import config
-from assistant.assistant import get_chain
+from assistant.assistant import AssistantChainManager
 from assistant.assistant_callback import StreamingLLMCallbackHandler
 from models.chat_message_in import ChatIn
 from models.chat_response import ChatResponse
@@ -28,7 +28,7 @@ app = FastAPI()
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     stream_handler = StreamingLLMCallbackHandler(websocket)
-    qa_chain = get_chain(stream_handler)
+    chain_manager = AssistantChainManager(stream_handler)
 
     while True:
         try:
@@ -57,6 +57,7 @@ async def websocket_endpoint(websocket: WebSocket):
             await websocket.send_json(start_resp.model_dump())
 
             # Send the message to the chain and feed the response back to the client
+            qa_chain = chain_manager.get_chain()
             final_message = await qa_chain.arun(chat_message.message)
             final_message = final_message.replace("A*", r"A\*")
 
