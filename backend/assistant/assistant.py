@@ -2,7 +2,6 @@ from langchain.agents import OpenAIFunctionsAgent, AgentExecutor
 from langchain.callbacks.manager import AsyncCallbackManager
 from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationTokenBufferMemory
-from langchain.prompts.chat import HumanMessagePromptTemplate
 from langchain.schema import SystemMessage
 
 import config
