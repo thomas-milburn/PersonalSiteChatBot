@@ -6,7 +6,7 @@ from langchain.tools import BaseTool
 from pydantic import BaseModel, Field
 
 with open("context/university_modules.json", "r") as f:
-    all_modules = [
+    all_modules_brief = [
         {
             "code": module["code"],  # e.g. "COM1001
             "name": module["name"],
@@ -16,6 +16,9 @@ with open("context/university_modules.json", "r") as f:
         }
         for module in json.load(f)
     ]
+
+with open("context/university_modules.json", "r") as f:
+    all_modules_details = json.load(f)
 
 
 class GetUniversityModulesArgs(BaseModel):
@@ -39,11 +42,11 @@ class GetUniversityModules(BaseTool):
         if university_year is not None:
             return [
                 module
-                for module in all_modules
+                for module in all_modules_brief
                 if module["university_year"] == university_year
             ]
 
-        return all_modules
+        return all_modules_brief
 
     async def _arun(
         self,
@@ -54,11 +57,11 @@ class GetUniversityModules(BaseTool):
         if university_year is not None:
             return [
                 module
-                for module in all_modules
+                for module in all_modules_brief
                 if module["university_year"] == university_year
             ]
 
-        return all_modules
+        return all_modules_brief
 
 
 class UniversityModuleDescriptionArgs(BaseModel):
@@ -76,30 +79,30 @@ class GetUniversityModuleDescription(BaseTool):
         self,
         module_code: str,
         run_manager: Optional[CallbackManagerForToolRun] = None,
-    ) -> List[Dict[str, Any]]:
+    ) -> dict:
         """Use the tool."""
-        return [
-            {
-                "code": module["code"],  # e.g. "COM1001
-                "name": module["name"],
-                "description": module["description"],
-            }
-            for module in all_modules
-            if module["code"].lower() == module_code.lower()
-        ]
+        for module in all_modules_brief:
+            if module["code"].lower() == module_code.lower():
+                return {
+                    "code": module["code"],  # e.g. "COM1001
+                    "name": module["name"],
+                    "description": module["description"],
+                }
+
+        return {"error": "Module not found"}
 
     async def _arun(
         self,
         module_code: str,
         run_manager: Optional[AsyncCallbackManagerForToolRun] = None,
-    ) -> List[Dict[str, Any]]:
+    ) -> dict:
         """Use the tool asynchronously."""
-        return [
-            {
-                "code": module["code"],  # e.g. "COM1001
-                "name": module["name"],
-                "description": module["description"],
-            }
-            for module in all_modules
-            if module["code"].lower() == module_code.lower()
-        ]
+        for module in all_modules_details:
+            if module["code"].lower() == module_code.lower():
+                return {
+                    "code": module["code"],  # e.g. "COM1001
+                    "name": module["name"],
+                    "description": module["description"],
+                }
+
+        return {"error": "Module not found"}
