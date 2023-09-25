@@ -37,7 +37,7 @@ class AssistantChainManager:
 
         self.memory = ConversationTokenBufferMemory(llm=self.llm,
                                                     memory_key="chat_history",
-                                                    max_token_limit=2048,
+                                                    max_token_limit=1024,
                                                     return_messages=True)
 
     def get_chain(self) -> AgentExecutor:
