@@ -8,7 +8,7 @@
         "description": "This module introduces the Software Engineering concepts that are needed to develop software systems that can meet basic functional requirements within a given problem domain. It covers the main steps in the process of developing such systems, from requirements analysis through to their implementation and testing. A major part of the module involves students working in teams to develop a web-based software system, which gives practical experience in teamwork and managing software projects and their products.",
         "university_year": 1,
         "grade_percent": 87,
-        "short_link": "https://t.ly/JHMZ2"
+        "short_link": "https://tinyurl.com/ynj38276"
     },
     {
         "id": 2,
@@ -19,7 +19,7 @@
         "description": "The course consists of (around) 10 blocks of 2-3 weeks work each. Each block develops mathematical concepts and techniques that are of foundational importance to computing. Lectures and problem classes will be used. The intention is to enthuse about these topics, to demonstrate why they are important to us, to lay the foundations of their knowledge and prepare students for future computing courses. It is not expected that the course will cover ALL of the maths that is needed later either in terms of depth or scope.",
         "university_year": 1,
         "grade_percent": 85,
-        "short_link": "https://t.ly/Wk660"
+        "short_link": "https://tinyurl.com/3nm6jat6"
     },
     {
         "id": 3,
@@ -30,7 +30,7 @@
         "description": "This module introduces programming concepts through the Java programming language. Program design and the use of testing to drive program creation are also covered. Initial focus is placed on the structured aspects typical of many programming languages: the ideas of a sequence, selection and repetition. The object-oriented approach to building large software systems from components is then presented. Throughout the module, emphasis is placed on the practice of writing well-structured and readable programs to solve problems.",
         "university_year": 1,
         "grade_percent": 96,
-        "short_link": "https://t.ly/WDqZ7"
+        "short_link": "https://tinyurl.com/2ffj7j32"
     },
     {
         "id": 4,
@@ -41,7 +41,7 @@
         "description": "This module provides an introduction to Artificial Intelligence, and to key concepts and problems in the field, such as whether a computer is capable of understanding, and whether humans should themselves be viewed as machines. It also provides a brief historical overview of the subject and reviews the state-of-the-art and open questions in some of the major sub-areas of AI, pointing out connections to research work in the Department. As well as providing a first encounter with the main issues that underlie attempts to create Artificial Intelligence, the module also has a more practical component that introduces algorithms and data structures for AI problem solving through practical programming examples, as well as hands-on experience with simple programming of robots. The emphasis here is on identifying the abstract nature of the problem that is to be solved, matching this to an appropriate algorithm or technique and implementing a solution. It also serves as an introduction to programming for research rather than for software engineering.",
         "university_year": 1,
         "grade_percent": 80,
-        "short_link": "https://t.ly/GKDns"
+        "short_link": "https://tinyurl.com/ykwxwa46"
     },
     {
         "id": 5,
@@ -52,7 +52,7 @@
         "description": "This module runs throughout the academic year, starting in Autumn and ending in Spring. The module consists of two parts. In the first, important elements of computer architecture are covered including digital logic, computer arithmetic and instruction set architecture. The approach in the module is to show how the basic elements of a computer are constructed and combined to give sophisticated architectures that support accelerated performance via cache memory and pipelining. The second half of the module shows how computing devices can be connected into networks, and covers the principles of layered protocols, error detection/correction and reliable transmission over networks.",
         "university_year": 1,
         "grade_percent": 81,
-        "short_link": "https://t.ly/B9XTT"
+        "short_link": "https://tinyurl.com/bp63znww"
     },
     {
         "id": 6,
@@ -63,7 +63,7 @@
         "description": "This module is for students studying Computer Science as a main subject. The Web and the Internet are now pervasive in modern life, providing an information resource, and promoting novel, interactive solutions to computing-related activities. The main focus of the module is on practical use of HTML, CSS and JavaScript in front-end development of interactive websites. As part of this, the module covers responsive web design, accessibility and legal issues when creating websites and an introduction to information security.",
         "university_year": 1,
         "grade_percent": 94,
-        "short_link": "https://t.ly/XMkFA"
+        "short_link": "https://tinyurl.com/td4tkj8h"
     },
     {
         "id": 7,
@@ -74,7 +74,7 @@
         "description": "Algorithms and algorithmic problem solving are at the heart of computer science. This module introduces students to the design and analysis of efficient algorithms and data structures. Students learn how to quantify the efficiency of an algorithm and what algorithmic solutions are efficient. Techniques for designing efficient algorithms are taught, including efficient data structures for storing and retrieving data. This is done using illustrative and fundamental problems: searching, sorting, graph algorithms, and combinatorial problems such as finding the shortest paths in networks.",
         "university_year": 1,
         "grade_percent": 60,
-        "short_link": "https://t.ly/9F3Ho"
+        "short_link": "https://tinyurl.com/msamyepw"
     },
     {
         "id": 8,
@@ -85,7 +85,7 @@
         "description": "The Faculty-wide Global Engineering Challenge Week is a compulsory part of the first-year programme. The project has been designed to develop student academic, transferable and employability skills as well as widen their horizons as global citizens. Working in multi-disciplinary groups of 5-6, for a full week, all students in the Faculty choose from a number of projects arranged under a range of themes including Water, Waste Management, Energy and Digital with scenarios set in an overseas location facing economic challenge. Some projects are based on the Engineers Without Borders Engineering for people design challenge*.\n\n*The EWB challenge provides students with the opportunity to learn about design, teamwork and communication through real, inspiring, sustainable and cross-cultural development projects identified by EWB with its community-based partner organisations.",
         "university_year": 1,
         "grade_percent": "Pass",
-        "short_link": "https://t.ly/31ktE"
+        "short_link": "https://tinyurl.com/3upm4xr5"
     },
     {
         "id": 10,
@@ -96,7 +96,7 @@
         "description": "This module is intended to serve as an introduction to machine learning and pattern processing, but with a clear emphasis on applications. The module is themed around the notion of data as a resource; how it is acquired, prepared for analysis and finally how we can learn from it. The module will employ a practical Python-based approach to try and help students develop an intuitive grasp of the sophisticated mathematical ideas that underpin this challenging but fascinating subject.",
         "university_year": 2,
         "grade_percent": 69,
-        "short_link": "https://t.ly/chxq5"
+        "short_link": "https://tinyurl.com/c3udznbf"
     },
     {
         "id": 11,
@@ -107,7 +107,7 @@
         "description": "This module provides a grounding in software systems design, highlighting security issues.  Topics include: choice of software lifecycle, customer-developer interaction, requirements capture, information management, database design, functional design, design patterns, software architectures, user interfaces, data validation, software verification and testing.  Security topics include: threats, countermeasures, policies and technologies.  The lectures are complemented by an integrating team-project.  This 20-credit unit prepares students to participate in the Software Hut (COM3420) in the Spring.",
         "university_year": 2,
         "grade_percent": 83,
-        "short_link": "https://t.ly/6DNcD"
+        "short_link": "https://tinyurl.com/mr35k9jn"
     },
     {
         "id": 12,
@@ -118,7 +118,7 @@
         "description": "This module is concerned with the design and implementation of effective human-machine interaction and the technology underpinning contemporary robotics.  These areas intersect in the field of human-robot interaction.  The course has a multidisciplinary content spanning psychology, human factors, computer science and robotics.",
         "university_year": 2,
         "grade_percent": 85,
-        "short_link": "https://t.ly/fYPUr"
+        "short_link": "https://tinyurl.com/2ja74sxk"
     },
     {
         "id": 13,
@@ -129,7 +129,7 @@
         "description": "This module introduces the foundations of logic in computer science.  The first part introduces the syntax and semantics of propositional and predicate logics, natural deduction, and notions such as soundness, completeness and (un)decidability.  The second part covers applications in computer science and beyond, such as automated reasoning and decision procedures, modal and temporal logics for the verification of computing systems, and type systems for programming languages.",
         "university_year": 2,
         "grade_percent": 55,
-        "short_link": "https://t.ly/J4PPg"
+        "short_link": "https://tinyurl.com/yp5258sc"
     },
     {
         "id": 14,
@@ -140,7 +140,7 @@
         "description": "This module introduces the principles of functional programming, using the Haskell programming language.  It introduces types and classes, function definitions, list comprehension, recursive and higher order functions, eager and lazy evaluation, and basic data types.",
         "university_year": 2,
         "grade_percent": 75,
-        "short_link": "https://t.ly/Lk6QD"
+        "short_link": "https://tinyurl.com/2p855hpa"
     },
     {
         "id": 15,
@@ -151,7 +151,7 @@
         "description": "This module introduces the mathematical and logical foundations and tools for modelling and analysing computing systems, including state machines, formal languages, logics, proof systems, and proof search procedures.",
         "university_year": 2,
         "grade_percent": 73,
-        "short_link": "https://t.ly/HfngZ"
+        "short_link": "https://tinyurl.com/2p9b8zwp"
     },
     {
         "id": 16,
@@ -162,7 +162,7 @@
         "description": "The Software Hut (a microcosm of a real Software House) gives students an opportunity to experience the processes of engineering a real software system for a real client in a competitive environment. The taught element covers the tools and technologies needed to manage software development projects successfully and to deliver software products that meet both client expectations and quality standards. Topics that are put into practice include: the requirements engineering process; software modelling and testing; using specific software development framework(s); group project management; quality assurance; testing. Tutorials take the form of project meetings, and so are concerned with team management, conduct of meetings and action minutes.",
         "university_year": 2,
         "grade_percent": 88,
-        "short_link": "https://t.ly/4T_W_"
+        "short_link": "https://tinyurl.com/5b74axab"
     },
     {
         "id": 17,
@@ -173,7 +173,7 @@
         "description": "The Faculty-wide Engineering - You're Hired Week is a compulsory part of the second year programme, and the week has been designed to develop student academic, transferable and employability skills. Working in multi-disciplinary groups of about six, students will work in interdisciplinary teams on a real world problem over an intensive week-long project. The projects are based on problems provided by industrial partners, and students will come up with ideas to solve them and proposals for a project to develop these ideas further.",
         "university_year": 2,
         "grade_percent": "Distinction",
-        "short_link": "https://t.ly/0Jip6"
+        "short_link": "https://tinyurl.com/bd8kfsx2"
     },
     {
         "id": 18,
@@ -184,7 +184,7 @@
         "description": "The course enables students to spend, typically, their third year of a BEng or fourth year of an MEng working in a 'course relevant' role in industry. This provides them with wide ranging experiences and opportunities that put their academic studies into context and improve their skills and employability. Students will also benefit from experiencing the culture in industry, making contacts, and the placement will support them in their preparation for subsequent employment.\nYII report `Thomas completed a placement year at Diamond Light Source. He worked on software projects related to ptychography, an imaging technique using X-rays.\nThomas was part of a small team. They had weekly meetings to plan tasks and track progress. Thomas took initiative to propose supervising work experience students.\nThomas worked on several projects during his placement:\n\tPtypyviewer: A demo project to learn about PtyPy\n\tPtyWeb: An open source interactive web interface for PtyPy using React\n\tPtyHub: A new ptychography configurator, submitter and visualizer being built for Diamond. Built using React and TypeScript\nHe used skills learnt at university like web development, backend programming, teamwork and presentations. He also expanded his skills in areas like React, physics concepts, public engagement through tours and talks.\nThomas reflected that the placement exceeded his expectations. He gained more experience with technologies and public speaking than anticipated. His existing academic knowledge provided a base to build on.`",
         "university_year": 3,
         "grade_percent": "Grade unreleased",
-        "short_link": "https://t.ly/jL-2b"
+        "short_link": "https://tinyurl.com/yjbnmraw"
     },
     {
         "id": 20,
@@ -195,7 +195,7 @@
         "description": "This module aims to provide a thorough grounding in the principles of software development for mobile devices. The Android platform will be used as an example, although the module emphasises general principles that are common across all mobile platforms. An important aim of the module is to demonstrate the real-world application of object-oriented programming principles and design patterns in software for mobile devices. Students undertake a substantial software implementation project, working in pairs. Students should be aware that there are limited places available on this course.",
         "university_year": 4,
         "grade_percent": "Grade unreleased",
-        "short_link": "https://t.ly/lqpUO"
+        "short_link": "https://tinyurl.com/bdhrvfx8"
     },
     {
         "id": 21,
@@ -206,7 +206,7 @@
         "description": "This module introduces fundamental concepts and ideas in natural language text processing, covers techniques for handling text corpora, and examines representative systems that require the automated processing of large volumes of text. The course focuses on modern quantitative techniques for text analysis and explores important models for representing and acquiring information from texts. Students should be aware that there are limited places available on this course",
         "university_year": 4,
         "grade_percent": "Grade unreleased",
-        "short_link": "https://t.ly/e2yyr"
+        "short_link": "https://tinyurl.com/bdd8tnse"
     },
     {
         "id": 22,
@@ -217,7 +217,7 @@
         "description": "This module aims to teach students the theory and implementation of reinforcement learning. Topics include: Supervised learning: the backpropagation algorithm (as prerequisite for Deep reinforcement learning).  Reinforcement Learning:\u00a0Temporal Difference Learning (Q learning, SARSA), Deep Reinforcement Learning, Actor Critic Architectures and Advanced Topics. As well as the material taught in class, students are expected to self-study relevant books and research articles and produce reports in research article styles.",
         "university_year": 4,
         "grade_percent": "Grade unreleased",
-        "short_link": "https://t.ly/7ruYU"
+        "short_link": "https://tinyurl.com/yx88ywdp"
     },
     {
         "id": 23,
@@ -228,7 +228,7 @@
         "description": "This module is concerned with gaining knowledge and understanding of the opportunities and challenges of the intelligent Web. We will introduce, study and apply contemporary technologies such as: 1) The basic tools of the advanced Web and their implementation; 2) Offline and multimodal interaction; 3) Client server architectures; 4) Web 3.0 and the Web of Data. Students should be aware that there are limited places available on this course.",
         "university_year": 4,
         "grade_percent": "Grade unreleased",
-        "short_link": "https://t.ly/CV3hj"
+        "short_link": "https://tinyurl.com/25hfx2mr"
     },
     {
         "id": 24,
@@ -239,7 +239,7 @@
         "description": "Low cost networked computers add eyes and ears (or sensors) and arms, legs and voices (or actuators) to the Internet. These devices are then connected to on-line `brains' (using big data, machine learning and analytics in the cloud). This field is called the Internet of Things (IoT). Will the result be a `world robot'?! No matter, in a world of many more devices than people, engineers who know how the new tech works and how to secure it will be in high demand. The COM3505 module covers the context and history of the IoT, the hardware, communications protocols and security systems it relies on, and the cloud-side analytics that make sense of the data produced. It gives practical hands-on experience of common IoT devices (sensors, actuators, microcontrollers), and look at a range of commercial platforms. Each student is given an ESP32 wifi microcontroller to keep and we program live IoT applications using that device. Students will have the opportunity to use the Diamond electronics lab and the iForge project space to complete their own IoT device with a range of hardware and capabilities. [Students should be competent programmers to take this course, be ok using Git and the command-line, and be aware that there are limited places available.]",
         "university_year": 4,
         "grade_percent": "Grade unreleased",
-        "short_link": "https://t.ly/XLRIJ"
+        "short_link": "https://tinyurl.com/346jjary"
     },
     {
         "id": 25,
@@ -250,7 +250,7 @@
         "description": "Software development often involves the improvement and adaptation of 'legacy systems' \u00bf well-established, business-critical software systems that might have become difficult to maintain over time. This module introduces the skill-set that is required to get to grips with such systems. It teaches students how to reverse-engineer and appraise complex, unwieldy systems by implementing source code and execution analysis techniques. It also presents a range of strategies that can be used to adapt and reengineer such systems to improve their quality and viability.",
         "university_year": 4,
         "grade_percent": "Grade unreleased",
-        "short_link": "https://t.ly/ft1U-"
+        "short_link": "https://tinyurl.com/5atu5prc"
     },
     {
         "id": 26,
@@ -261,7 +261,7 @@
         "description": "Cyber Security Team Project is a module that equips students with the knowledge needed to keep an organisation secure from today's cyber security threats and presents the necessary steps to take when a breach occurs.\n\nUsing a combination of learning methods and teaching techniques such as project based learning, active learning and case studies, this module teaches cyber security management principles that are needed to secure the digital assets of an organisation. A major part of this module involves students working in teams to evaluate and develop secure policies and strategies to solve real-world cyber security issues for organisations.\n\nStudents should be aware that there are limited places available on this module.",
         "university_year": 4,
         "grade_percent": "Grade unreleased",
-        "short_link": "https://t.ly/beS3o"
+        "short_link": "https://tinyurl.com/5e33nvnr"
     },
     {
         "id": 27,
@@ -272,7 +272,7 @@
         "description": "In the individual research project, you will complete a major original piece of software design, or an experimental investigation.  This work will be reported formally in a research dissertation and also presented at a project presentation session, to which industrial representatives, students and academics are invited.  The work will include an Interim report that consists of an initial survey and literature review.  You will be engaged in a major piece of software development, or the design and execution of an empirical experiment.  You will have regular meetings with your supervisor, who will advise on any problems you encounter.  You will prepare an 7,000-14,000 word dissertation, which includes the material from the interim report, but also contains a complete design, implementation and evaluation of the results of your project.  This may be assessed by oral examination.",
         "university_year": 4,
         "grade_percent": "Grade unreleased",
-        "short_link": "https://t.ly/Q5SDT"
+        "short_link": "https://tinyurl.com/yf9df7jn"
     },
     {
         "id": 28,
@@ -283,6 +283,6 @@
         "description": "The module is designed to introduce engineering students to key areas of financial and legal risk that engineers should be aware of in their working environment. The module will draw directly on practical issues of budgeting, raising finance, assessing financial risks and making financial decisions in the context of engineering projects and/or product development. At the same time the module will develop students' understanding of the legal aspects of entering into contracts for the development and delivery of engineering projects and products and an awareness of environmental regulation, liability for negligence, intellectual property rights and the importance of data protection. Through a series of parallel running lectures in the two disciplines, the module will provide a working knowledge of the two areas and how they impinge on engineering practice. There will be a heavy emphasis on group working, report writing and presentation as part of the assessment supplemented by online exercises and an individual portfolio.",
         "university_year": 4,
         "grade_percent": "Grade unreleased",
-        "short_link": "https://t.ly/u4ke4"
+        "short_link": "https://tinyurl.com/e65munr3"
     }
 ]
