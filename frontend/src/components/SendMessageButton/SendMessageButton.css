@@ -1,0 +1,21 @@
+:root {
+  --send-message-button-width: 30px;
+  --send-message-button-height: 30px;
+}
+
+.send-message-button {
+  width: var(--send-message-button-width);
+  height: var(--send-message-button-height);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.send-message-button:disabled {
+  cursor: not-allowed;
+}
+
+.send-message-button__image {
+  width: var(--send-message-button-width);
+  height: var(--send-message-button-height);
+}

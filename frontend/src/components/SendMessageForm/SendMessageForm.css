@@ -24,20 +24,6 @@
   background-color: #353b48;
 }
 
-.send-message-form__button {
-  width: 10%;
-  height: 50px;
-  margin: 0 10px;
-  padding: 0 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  color: #fff;
-  background-color: #353b48;
-  cursor: pointer;
-}
-
-.send-message-form__button:disabled {
-  background-color: #2f3640;
+.send-message-form__input:disabled {
   cursor: not-allowed;
 }

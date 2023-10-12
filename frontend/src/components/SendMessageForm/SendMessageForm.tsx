@@ -1,10 +1,12 @@
 import React from 'react'
 import './SendMessageForm.css'
+import SendMessageButton from '../SendMessageButton/SendMessageButton'
+import { WebsocketConnectionStatus } from '../ChatSession/ChatSession'
 
 interface Props {
   sendMessageInputValue: string
   setSendMessageInputValue: (value: string) => void
-  isWebsocketConnected: boolean
+  websocketStatus: WebsocketConnectionStatus
   isReceivingMessage: boolean
   onSendMessage: (message: string) => void
 }
@@ -12,7 +14,7 @@ interface Props {
 const SendMessageForm = ({
   sendMessageInputValue,
   setSendMessageInputValue,
-  isWebsocketConnected,
+  websocketStatus,
   isReceivingMessage,
   onSendMessage
 }: Props): React.ReactNode => {
@@ -33,19 +35,16 @@ const SendMessageForm = ({
           if (event.key === 'Enter') {
             handleSendMessage(sendMessageInputValue)
           }
-        }
-        }
-      />
-      <button
-        type="button"
-        className="send-message-form__button"
-        onClick={() => {
-          handleSendMessage(sendMessageInputValue)
         }}
-        disabled={isReceivingMessage || !isWebsocketConnected || sendMessageInputValue === ''}
-      >
-        Send
-      </button>
+        disabled={websocketStatus === WebsocketConnectionStatus.DISCONNECTED}
+      />
+
+      <SendMessageButton
+        onSendMessage={handleSendMessage}
+        websocketStatus={websocketStatus}
+        isReceivingMessage={isReceivingMessage}
+        sendMessageInputValue={sendMessageInputValue}
+      />
     </div>
   )
 }

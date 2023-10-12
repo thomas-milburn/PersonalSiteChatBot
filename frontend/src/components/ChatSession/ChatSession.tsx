@@ -5,8 +5,14 @@ import SendMessageForm from '../SendMessageForm/SendMessageForm'
 import ReCAPTCHA from 'react-google-recaptcha'
 import './ChatSession.css'
 
+export enum WebsocketConnectionStatus {
+  CONNECTING = 'CONNECTING',
+  CONNECTED = 'CONNECTED',
+  DISCONNECTED = 'DISCONNECTED'
+}
+
 const ChatSession = (): React.ReactNode => {
-  const [isWebsocketConnected, setWebsocketConnected] = React.useState<boolean>(false)
+  const [websocketStatus, setWebsocketStatus] = React.useState<WebsocketConnectionStatus>(WebsocketConnectionStatus.CONNECTING)
   const [isReceivingMessage, setReceivingMessage] = React.useState<boolean>(false)
   const [isWaitingForRecaptcha, setWaitingForRecaptcha] = React.useState<boolean>(false)
   const [staticMessages, setStaticMessages] = React.useState<ChatMessage[]>([])
@@ -26,7 +32,7 @@ const ChatSession = (): React.ReactNode => {
     websocketConnectionRef.current = socket
 
     socket.addEventListener('open', (event) => {
-      setWebsocketConnected(true)
+      setWebsocketStatus(WebsocketConnectionStatus.CONNECTED)
     })
 
     socket.addEventListener('message', (event) => {
@@ -51,6 +57,12 @@ const ChatSession = (): React.ReactNode => {
           return currentIncomingMessage + message.message
         })
       }
+    })
+
+    socket.addEventListener('close', (event) => {
+      setWebsocketStatus(WebsocketConnectionStatus.DISCONNECTED)
+      setReceivingMessage(false)
+      setIncomingMessage(undefined)
     })
 
     return () => {
@@ -99,7 +111,7 @@ const ChatSession = (): React.ReactNode => {
       <SendMessageForm
         sendMessageInputValue={sendMessageInputValue}
         setSendMessageInputValue={setSendMessageInputValue}
-        isWebsocketConnected={isWebsocketConnected}
+        websocketStatus={websocketStatus}
         isReceivingMessage={isReceivingMessage}
         onSendMessage={handleSendMessage}
       />
