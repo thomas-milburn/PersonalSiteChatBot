@@ -1,0 +1,11 @@
+.initial-suggested-messages-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.initial-suggested-messages-row__button {
+  width: 150px;
+}

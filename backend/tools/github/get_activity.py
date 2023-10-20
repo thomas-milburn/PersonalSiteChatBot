@@ -1,3 +1,4 @@
+import json
 from typing import Optional, List, Type
 
 import aiohttp
@@ -5,6 +6,7 @@ import requests
 from langchain.callbacks.manager import CallbackManagerForToolRun, AsyncCallbackManagerForToolRun
 from langchain.tools import BaseTool
 from pydantic import BaseModel
+
 import config
 
 
@@ -21,7 +23,7 @@ class GithubGetUserEvents(BaseTool):
     def _run(
         self,
         run_manager: Optional[CallbackManagerForToolRun] = None,
-    ) -> List[dict]:
+    ) -> str:
         """Use the tool."""
         github_username = config.config["PERSONAL_SITE_MY_GITHUB_USERNAME"]
         response = requests.get(f"https://api.github.com/users/{github_username}/events/public")
@@ -29,12 +31,12 @@ class GithubGetUserEvents(BaseTool):
         if response.status_code == 200:
             return minify_data(response.json())
 
-        return [{"error": "Failed to get user events"}]
+        return json.dumps([{"error": "Failed to get user events"}])
 
     async def _arun(
         self,
         run_manager: Optional[AsyncCallbackManagerForToolRun] = None,
-    ) -> List[dict]:
+    ) -> str:
         """Use the tool asynchronously."""
         github_username = config.config["PERSONAL_SITE_MY_GITHUB_USERNAME"]
         async with aiohttp.ClientSession() as session:
@@ -42,10 +44,10 @@ class GithubGetUserEvents(BaseTool):
                 if response.status == 200:
                     return minify_data(await response.json())
 
-            return [{"error": "Failed to get user events"}]
+            return json.dumps([{"error": "Failed to get user events"}])
 
 
-def minify_data(data: List[dict]) -> List[dict]:
+def minify_data(data: List[dict]) -> str:
     response_data = []
 
     for event in data:
@@ -64,7 +66,7 @@ def minify_data(data: List[dict]) -> List[dict]:
         if minified:
             response_data.append(minified)
 
-    return response_data
+    return json.dumps(response_data[:10])[:10000]
 
 
 def minify_push_event(push_event_data) -> dict:

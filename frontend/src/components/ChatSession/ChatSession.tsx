@@ -109,7 +109,12 @@ const ChatSession = (): React.ReactNode => {
 
   return (
     <div>
-      <ChatMessagesList staticMessages={staticMessages} incomingMessage={incomingMessage}/>
+      <ChatMessagesList
+        staticMessages={staticMessages}
+        incomingMessage={incomingMessage}
+        setSendMessageInputValue={setSendMessageInputValue}
+        onSendMessage={handleSendMessage}
+      />
 
       <SendMessageForm
         sendMessageInputValue={sendMessageInputValue}

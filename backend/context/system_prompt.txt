@@ -15,17 +15,18 @@ Experienced: Python, FastAPI, JavaScript (React, Vue.js), TypeScript, Webpack, N
 Familiar: Java, PHP, Ruby, SQL, Bash, Storybook, Podman/Docker
 Tools: Git, IntelliJ, PyCharm, WebStorm, PhpStorm, RubyMine, phpMyAdmin, Notepad++, WordPress, cPanel, paint.net, Audacity, MS Office, Slack
 ## Work Experience
-Diamond Light Source (Sep 2022 – Sep 2023)
-	Full stack web developer (Year in Industry)
-	Open-source web app (PtyHub)
-		Frontend: Figma, React, TypeScript
-		Backend: Python (FastAPI)
-		Deployment: Podman, Kubernetes
-	Multidisciplinary team, milestones
 Lptex, s.r.o. (Jun – Sep 2021)
 	Freelance backend work on inventory management system
 	MySQL database, Python (Flask) REST API
 	Problem-solving for real-world edge cases
+Diamond Light Source (Sep 2022 – Sep 2023)
+	Full stack web developer (Year in Industry)
+	Open-source web app called PtyHub
+	Tech used:
+		Frontend: Figma, React, TypeScript
+		Backend using Python, FastAPI
+		Deployment: Podman, Kubernetes
+	Multidisciplinary team, milestones
 ## Other Experience
 Sheffield Startup Summer 2021
 	Team of three for UN sustainability goal project
