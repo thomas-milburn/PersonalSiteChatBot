@@ -43,8 +43,11 @@ const ChatSession = (): React.ReactNode => {
       }
 
       if (['end', 'error', 'tool'].includes(message.type)) {
-        setIncomingMessage(undefined)
-        setReceivingMessage(false)
+        if (message.sender === 'bot') {
+          setIncomingMessage(undefined)
+          setReceivingMessage(false)
+        }
+
         setStaticMessages((currentStaticMessages) => {
           return [...currentStaticMessages, message]
         })
