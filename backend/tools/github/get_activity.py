@@ -73,16 +73,14 @@ def minify_push_event(push_event_data) -> dict:
     new_commits = []
 
     for commit in push_event_data["payload"]["commits"]:
-        new_commits.append({
-            "message": commit["message"],
-            "url": commit["url"]
-        })
+        new_commits.append(commit["message"])
 
     return {
         "type": "PushEvent",
         "repo": push_event_data["repo"],
         "commits": new_commits,
-        "created_at": push_event_data["created_at"]
+        "created_at": push_event_data["created_at"],
+        "url": f"https://github.com/{push_event_data['repo']['name']}/commit/{push_event_data['payload']['head']}"
     }
 
 
@@ -93,8 +91,7 @@ def minify_pull_request_event(pull_request_event_data) -> dict:
         "action": pull_request_event_data["payload"]["action"],
         "pull_request": {
             "title": pull_request_event_data["payload"]["pull_request"]["title"],
-            "description": pull_request_event_data["payload"]["pull_request"]["body"],
-            "url": pull_request_event_data["payload"]["pull_request"]["url"]
+            "description": pull_request_event_data["payload"]["pull_request"]["body"]
         },
         "created_at": pull_request_event_data["created_at"]
     }
