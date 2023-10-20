@@ -2,18 +2,22 @@ import React, { useMemo } from 'react'
 import sendIcon from '../../assets/buttonIcons/send.svg'
 import connectingIcon from '../../assets/buttonIcons/connecting.svg'
 import lostConnectionIcon from '../../assets/buttonIcons/lostConnection.svg'
+import checkRecaptchaIcon from '../../assets/buttonIcons/checkingRecaptcha.svg'
+import generatingResponseIcon from '../../assets/buttonIcons/generatingResponse.svg'
 import './SendMessageButton.css'
 import { WebsocketConnectionStatus } from '../ChatSession/ChatSession'
 
 interface Props {
   websocketStatus: WebsocketConnectionStatus
   isReceivingMessage: boolean
+  isWaitingForRecaptcha: boolean
   sendMessageInputValue: string
   onSendMessage: (message: string) => void
 }
 
 const SendMessageButton = ({
   websocketStatus,
+  isWaitingForRecaptcha,
   isReceivingMessage,
   sendMessageInputValue,
   onSendMessage
@@ -29,7 +33,11 @@ const SendMessageButton = ({
     }
 
     if (isReceivingMessage) {
-      return ['', 'Receiving message...']
+      return [generatingResponseIcon, 'Receiving message...']
+    }
+
+    if (isWaitingForRecaptcha) {
+      return [checkRecaptchaIcon, 'reCAPTCHA is checking if you\'re a robot...']
     }
 
     if (sendMessageInputValue === '') {

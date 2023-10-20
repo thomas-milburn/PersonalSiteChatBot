@@ -116,6 +116,7 @@ const ChatSession = (): React.ReactNode => {
         setSendMessageInputValue={setSendMessageInputValue}
         websocketStatus={websocketStatus}
         isReceivingMessage={isReceivingMessage}
+        isWaitingForRecaptcha={isWaitingForRecaptcha}
         onSendMessage={handleSendMessage}
       />
 

@@ -8,6 +8,7 @@ interface Props {
   setSendMessageInputValue: (value: string) => void
   websocketStatus: WebsocketConnectionStatus
   isReceivingMessage: boolean
+  isWaitingForRecaptcha: boolean
   onSendMessage: (message: string) => void
 }
 
@@ -16,6 +17,7 @@ const SendMessageForm = ({
   setSendMessageInputValue,
   websocketStatus,
   isReceivingMessage,
+  isWaitingForRecaptcha,
   onSendMessage
 }: Props): React.ReactNode => {
   const handleSendMessage = (message: string): void => {
@@ -43,6 +45,7 @@ const SendMessageForm = ({
         onSendMessage={handleSendMessage}
         websocketStatus={websocketStatus}
         isReceivingMessage={isReceivingMessage}
+        isWaitingForRecaptcha={isWaitingForRecaptcha}
         sendMessageInputValue={sendMessageInputValue}
       />
     </div>
