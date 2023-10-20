@@ -17,7 +17,6 @@ const InitialSuggestedMessagesRow = ({
     'Which modules did Thomas take in his first year of University?',
     'Tools Thomas uses for frontend development?',
     'Has Thomas got any backend experience?',
-    'When has he used FastAPI?',
     'What work experience does Thomas have?',
     'What is his most recent GitHub commit?',
     'Can you link me to Thomas\'s LinkedIn profile?',
