@@ -9,7 +9,7 @@
 .initial-suggested-messages-row__button {
   width: 150px;
   padding: 10px;
-  background-color: #2f3640;
+  background-color: #2b313e;
   color: white;
   border-radius: 10px;
   border: #b3b3b3 solid 1px;
@@ -18,7 +18,7 @@
 
   cursor: pointer;
   font-weight: normal;
-  transition: all 0.3s;
+  transition: all 1s;
 }
 
 .initial-suggested-messages-row__button:hover {
