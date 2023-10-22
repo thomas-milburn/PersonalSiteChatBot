@@ -6,6 +6,7 @@ import checkRecaptchaIcon from '../../assets/buttonIcons/checkingRecaptcha.svg'
 import generatingResponseIcon from '../../assets/buttonIcons/generatingResponse.svg'
 import './SendMessageButton.css'
 import { WebsocketConnectionStatus } from '../ChatSession/ChatSession'
+import SendMessageFormButton from '../SendMessageFormButton/SendMessageFormButton'
 
 interface Props {
   websocketStatus: WebsocketConnectionStatus
@@ -48,17 +49,16 @@ const SendMessageButton = ({
   }, [websocketStatus, isReceivingMessage, sendMessageInputValue])
 
   return (
-    <button
+    <SendMessageFormButton
+      buttonImage={icon}
+      altText="Send message icon"
       type="button"
-      className="send-message-button"
       onClick={() => {
         if (!buttonDisabled) onSendMessage(sendMessageInputValue)
       }}
       disabled={buttonDisabled}
       title={tooltip}
-    >
-      <img src={icon} alt="Send message" className="send-message-button__image"/>
-    </button>
+    />
   )
 }
 

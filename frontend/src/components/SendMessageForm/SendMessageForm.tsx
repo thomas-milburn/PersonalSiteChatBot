@@ -2,6 +2,8 @@ import React from 'react'
 import './SendMessageForm.css'
 import SendMessageButton from '../SendMessageButton/SendMessageButton'
 import { WebsocketConnectionStatus } from '../ChatSession/ChatSession'
+import SendMessageIcon from '../../assets/buttonIcons/settings.svg'
+import SendMessageFormButton from '../SendMessageFormButton/SendMessageFormButton'
 
 interface Props {
   sendMessageInputValue: string
@@ -26,6 +28,12 @@ const SendMessageForm = ({
 
   return (
     <div className="send-message-form">
+      <SendMessageFormButton
+        buttonImage={SendMessageIcon}
+        altText="Settings icon"
+        title="Settings"
+      />
+
       <input
         type="text"
         className="send-message-form__input"
