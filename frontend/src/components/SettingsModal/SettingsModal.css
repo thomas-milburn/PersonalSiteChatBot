@@ -1,6 +1,9 @@
 .setting-modal__content {
   width: 100%;
-  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .setting-modal__content__header {
@@ -42,6 +45,7 @@
 .setting-modal__content__settings {
   font-size: 20px;
   padding: 20px;
+  height: 100%;
 }
 
 .setting-modal__content__settings_setting {
@@ -51,4 +55,10 @@
   align-items: center;
   justify-content: space-between;
   text-align: left;
+}
+
+.setting-modal__content__footer {
+  padding: 20px;
+  text-align: center;
+  color: #b3b3b3;
 }

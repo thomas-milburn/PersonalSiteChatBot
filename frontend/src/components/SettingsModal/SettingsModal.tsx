@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type ReactModal from 'react-modal'
 import Modal from 'react-modal'
 import './SettingsModal.css'
@@ -33,6 +33,7 @@ const SettingsModal = ({
   isModalOpen,
   closeModal
 }: Props): React.ReactNode => {
+  const [toggle, setToggle] = useState<boolean>(false)
   return (
     <Modal isOpen={isModalOpen} style={modalStyle}>
       <div className="setting-modal__content">
@@ -51,8 +52,14 @@ const SettingsModal = ({
         <div className="setting-modal__content__settings">
           <div className="setting-modal__content__settings_setting">
             <span>Show response from tools 🔧</span>
-            <Switch checked={true} onChange={() => {}} />
+            <Switch checked={toggle} onChange={setToggle} />
           </div>
+        </div>
+
+        <div className="setting-modal__content__footer">
+          <span>
+            This website uses <a href="https://react.dev/" target="_blank" rel="noreferrer">React.js</a> for the frontend and <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noreferrer">FastAPI</a> for the backend. It utilises <a href="https://platform.openai.com/docs/models/gpt-3-5" target="_blank" rel="noreferrer">GPT-3.5 Turbo</a> as the large language model. If you&apos;d like to check out the code, you can find this project on <a href="https://github.com/thomas-milburn/PersonalSiteChatBot" target="_blank" rel="noreferrer">GitHub</a>.
+          </span>
         </div>
 
       </div>
