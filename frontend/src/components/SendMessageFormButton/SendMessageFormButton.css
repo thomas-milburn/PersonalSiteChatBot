@@ -9,6 +9,10 @@
   border: none;
 }
 
+.send-message-form-button:not(:disabled):hover .send-message-form-button__image {
+  filter: brightness(0.8);
+}
+
 .send-message-form-button:disabled {
   cursor: not-allowed;
 }
