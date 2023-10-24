@@ -1,9 +1,11 @@
 from pydantic import BaseModel, field_validator
+from models.base_response import BaseResponse
 
 
-class ChatResponse(BaseModel):
+class ChatResponse(BaseResponse):
     """Chat response schema."""
 
+    message_type: str = "chat_response"
     sender: str
     message: str
     type: str

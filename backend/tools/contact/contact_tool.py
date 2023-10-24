@@ -3,6 +3,7 @@ from typing import Optional, Type
 from langchain.callbacks.manager import CallbackManagerForToolRun, AsyncCallbackManagerForToolRun
 from langchain.tools import BaseTool
 from pydantic import BaseModel, Field
+from tools.contact.contact_exception import ContactException
 
 
 class ContactToolArgs(BaseModel):
@@ -15,7 +16,7 @@ class ContactToolArgs(BaseModel):
 
 class ContactTool(BaseTool):
     name = "message_thomas"
-    description = """Send user's message to Thomas, enabling direct questions to him. Human users must provide their real details. Useful if the assistant does not know the answer to a question"""
+    description = """Send user's message to Thomas, enabling direct questions to him. Useful if the assistant does not know the answer to a question. Messages should be written as if they are being asked by the user e.g. I would like to know what your favourite colour is"""
     args_schema: Type[ContactToolArgs] = ContactToolArgs
 
     def _run(
@@ -26,9 +27,7 @@ class ContactTool(BaseTool):
         run_manager: Optional[CallbackManagerForToolRun] = None,
     ) -> dict:
         """Use the tool."""
-        return {
-            "message": "Your message has been sent. Thomas will get back to you as soon as possible."
-        }
+        raise ContactException(human_name, human_email, message)
 
     async def _arun(
         self,
@@ -38,6 +37,4 @@ class ContactTool(BaseTool):
         run_manager: Optional[AsyncCallbackManagerForToolRun] = None,
     ) -> dict:
         """Use the tool asynchronously."""
-        return {
-            "message": "Your message has been sent. Thomas will get back to you as soon as possible."
-        }
+        raise ContactException(human_name, human_email, message)

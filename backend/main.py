@@ -11,6 +11,8 @@ from assistant.assistant import AssistantChainManager
 from assistant.assistant_callback import StreamingLLMCallbackHandler
 from models.chat_message_in import ChatIn
 from models.chat_response import ChatResponse
+from models.contact_pre_filled_response import ContactPreFilledResponse
+from tools.contact.contact_exception import ContactException
 from util.validate_recaptcha import is_recaptcha_valid
 
 # Load the environment variables from the .env file
@@ -64,6 +66,15 @@ async def websocket_endpoint(websocket: WebSocket):
             # Send the end-response back to the client
             end_resp = ChatResponse(sender="bot", message=final_message, type="end")
             await websocket.send_json(end_resp.model_dump())
+        except ContactException as e:
+            # Sort of a hacky way of handling things, but it works
+            # We raise a ContactException, which is caught here, and then show a special message to the user
+            resp = ContactPreFilledResponse(
+                suggested_message=e.message,
+                name=e.sender_name,
+                email=e.sender_email,
+            )
+            await websocket.send_json(resp.model_dump())
         except WebSocketDisconnect:
             logging.info("WebSocketDisconnect")
             # TODO try to reconnect with back-off

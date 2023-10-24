@@ -4,6 +4,8 @@ import ChatMessagesList from '../ChatMessagesList/ChatMessagesList'
 import SendMessageForm from '../SendMessageForm/SendMessageForm'
 import ReCAPTCHA from 'react-google-recaptcha'
 import './ChatSession.css'
+import type BaseResponse from '../../types/BaseResponse'
+import type ContactPreFilled from '../../types/ContactPreFilled'
 
 export enum WebsocketConnectionStatus {
   CONNECTING = 'CONNECTING',
@@ -15,7 +17,7 @@ const ChatSession = (): React.ReactNode => {
   const [websocketStatus, setWebsocketStatus] = React.useState<WebsocketConnectionStatus>(WebsocketConnectionStatus.CONNECTING)
   const [isReceivingMessage, setReceivingMessage] = React.useState<boolean>(false)
   const [isWaitingForRecaptcha, setWaitingForRecaptcha] = React.useState<boolean>(false)
-  const [staticMessages, setStaticMessages] = React.useState<ChatMessage[]>([])
+  const [staticMessages, setStaticMessages] = React.useState<BaseResponse[]>([])
   const [incomingMessage, setIncomingMessage] = React.useState<string | undefined>(undefined)
   const [sendMessageInputValue, setSendMessageInputValue] = React.useState<string>('')
   const sendMessageInputValueRef = useRef<string>('')
@@ -31,38 +33,56 @@ const ChatSession = (): React.ReactNode => {
     const socket = new WebSocket(`ws://${location.host}/chat`)
     websocketConnectionRef.current = socket
 
-    socket.addEventListener('open', (event) => {
+    socket.addEventListener('open', () => {
       setWebsocketStatus(WebsocketConnectionStatus.CONNECTED)
     })
 
     socket.addEventListener('message', (event) => {
-      const message: ChatMessage = JSON.parse(event.data)
-      if (message.type === 'start') {
-        setIncomingMessage(undefined)
-        return
-      }
+      const baseMessage: BaseResponse = JSON.parse(event.data)
 
-      if (['end', 'error', 'tool'].includes(message.type)) {
-        if (message.sender === 'bot') {
+      if (baseMessage.message_type === 'chat_response') {
+        // Normal chat message case
+        const message: ChatMessage = baseMessage as ChatMessage
+        if (message.type === 'start') {
           setIncomingMessage(undefined)
-          setReceivingMessage(false)
+          return
         }
 
+        if (['end', 'error'].includes(message.type)) {
+          if (message.sender === 'bot') {
+            setIncomingMessage(undefined)
+            setReceivingMessage(false)
+          }
+        }
+
+        if (['end', 'error', 'tool'].includes(message.type)) {
+          setStaticMessages((currentStaticMessages) => {
+            return [...currentStaticMessages, message]
+          })
+          return
+        }
+
+        if (message.type === 'stream') {
+          setIncomingMessage((currentIncomingMessage) => {
+            if (!currentIncomingMessage) return message.message
+            return currentIncomingMessage + message.message
+          })
+        }
+      }
+
+      if (baseMessage.message_type === 'contact_pre_filled') {
+        // Show contact form pre-filled with data
+        const message: ContactPreFilled = baseMessage as ContactPreFilled
         setStaticMessages((currentStaticMessages) => {
           return [...currentStaticMessages, message]
         })
-        return
-      }
 
-      if (message.type === 'stream') {
-        setIncomingMessage((currentIncomingMessage) => {
-          if (!currentIncomingMessage) return message.message
-          return currentIncomingMessage + message.message
-        })
+        setIncomingMessage(undefined)
+        setReceivingMessage(false)
       }
     })
 
-    socket.addEventListener('close', (event) => {
+    socket.addEventListener('close', () => {
       setWebsocketStatus(WebsocketConnectionStatus.DISCONNECTED)
       setReceivingMessage(false)
       setIncomingMessage(undefined)
