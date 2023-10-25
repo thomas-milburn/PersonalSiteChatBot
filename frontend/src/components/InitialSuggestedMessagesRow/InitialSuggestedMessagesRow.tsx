@@ -13,6 +13,7 @@ const InitialSuggestedMessagesRow = ({
   onSendMessage
 }: Props): React.ReactNode | null => {
   const suggestedMessages = [
+    'I would like to contact Thomas',
     'Hey, what can you do?',
     'Which modules did Thomas take in his first year of University?',
     'Tools Thomas uses for frontend development?',
