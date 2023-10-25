@@ -1,12 +1,13 @@
 import React from 'react'
-import BaseChatMessage from '../BaseChatMessage/BaseChatMessage'
+import ChatMessage from '../ChatMessage/ChatMessage'
 import IncomingChatMessage from '../IncomingChatMessage/IncomingChatMessage'
 import './ChatMessagesList.css'
 import ChatIntroduction from '../ChatIntroduction/ChatIntroduction'
 import InitialSuggestedMessagesRow from '../InitialSuggestedMessagesRow/InitialSuggestedMessagesRow'
 import type BaseResponse from '../../types/BaseResponse'
-import type ChatMessage from '../../types/ChatMessage'
+import type ChatMessageType from '../../types/ChatMessageType'
 import type ContactPreFilled from '../../types/ContactPreFilled'
+import ContactMessage from '../ContactMessage/ContactMessage'
 
 interface Props {
   staticMessages: BaseResponse[]
@@ -33,20 +34,16 @@ const ChatMessagesList = ({
 
       {staticMessages.map((message, index) => {
         if (message.message_type === 'chat_response') {
-          const castedMessage = message as ChatMessage
+          const castedMessage = message as ChatMessageType
           return (
-            <BaseChatMessage message={castedMessage} key={index}/>
+            <ChatMessage message={castedMessage} key={index}/>
           )
         }
 
         if (message.message_type === 'contact_pre_filled') {
           const castedMessage = message as ContactPreFilled
           return (
-            <div key={index}>
-              <p>{castedMessage.name}</p>
-              <p>{castedMessage.email}</p>
-              <p>{castedMessage.suggested_message}</p>
-            </div>
+            <ContactMessage contactDetails={castedMessage} key={index}/>
           )
         }
 

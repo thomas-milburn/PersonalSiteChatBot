@@ -1,0 +1,8 @@
+.chat-message__sender {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.chat-message__markup p {
+  margin: 0;
+}

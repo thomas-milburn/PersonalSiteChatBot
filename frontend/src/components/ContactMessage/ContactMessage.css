@@ -1,0 +1,40 @@
+.contact-message__title {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.contact-message__label {
+  margin-bottom: 5px;
+}
+
+.contact-message__input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-family: sans-serif;
+  font-size: 16px;
+  background-color: #353b48;
+  color: #fff;
+}
+
+textarea.contact-message__input {
+  resize: none;
+  height: 150px;
+}
+
+.contact-message__submit {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-family: sans-serif;
+  font-size: 16px;
+  background-color: #353b48;
+  color: #fff;
+  cursor: pointer;
+}
+
+.contact-message__submit:hover {
+  background-color: #313742;
+}

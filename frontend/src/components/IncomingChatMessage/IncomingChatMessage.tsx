@@ -1,6 +1,6 @@
 import React from 'react'
-import BaseChatMessage from '../BaseChatMessage/BaseChatMessage'
-import type ChatMessage from '../../types/ChatMessage'
+import ChatMessage from '../ChatMessage/ChatMessage'
+import type ChatMessageType from '../../types/ChatMessageType'
 
 interface Props {
   message: string | undefined
@@ -8,12 +8,12 @@ interface Props {
 
 const IncomingChatMessage = ({ message }: Props): React.ReactNode => {
   return message
-    ? <BaseChatMessage message={{
+    ? <ChatMessage message={{
       message_type: 'chat_response',
       message,
       sender: 'bot',
       type: 'stream'
-    } satisfies ChatMessage} />
+    } satisfies ChatMessageType} />
     : null
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import type ChatMessage from '../../types/ChatMessage'
+import type ChatMessageType from '../../types/ChatMessageType'
 import ChatMessagesList from '../ChatMessagesList/ChatMessagesList'
 import SendMessageForm from '../SendMessageForm/SendMessageForm'
 import ReCAPTCHA from 'react-google-recaptcha'
@@ -42,7 +42,7 @@ const ChatSession = (): React.ReactNode => {
 
       if (baseMessage.message_type === 'chat_response') {
         // Normal chat message case
-        const message: ChatMessage = baseMessage as ChatMessage
+        const message: ChatMessageType = baseMessage as ChatMessageType
         if (message.type === 'start') {
           setIncomingMessage(undefined)
           return
