@@ -146,7 +146,7 @@ const ChatSession = (): React.ReactNode => {
       />
 
       <ReCAPTCHA
-        sitekey="6LeSKkMoAAAAALnqvmvI5yHABLbGYDueEmnsF9DH"
+        sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY as string}
         onChange={handleRecaptchaCallback}
         size="invisible"
         ref={recaptchaRef}

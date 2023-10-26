@@ -29,11 +29,21 @@ const ContactMessage = ({
   }, [])
 
   const handleSubmit = (): void => {
-    console.log('Submitting contact form')
-    console.log('Name: ', name)
-    console.log('Email: ', email)
-    console.log('Message: ', message)
-    setHasSubmitted(true)
+    // send discord webhook
+    const webhookUrl = process.env.REACT_APP_DISCORD_WEBHOOK_URL as string
+    const webhookBody = {
+      content: `**Name:** ${name}\n**Email:** ${email}\n**Message:** ${message}`
+    }
+
+    void fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(webhookBody)
+    }).then(() => {
+      setHasSubmitted(true)
+    })
   }
 
   return (
