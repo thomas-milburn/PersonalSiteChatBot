@@ -38,3 +38,8 @@ textarea.contact-message__input {
 .contact-message__submit:hover {
   background-color: #313742;
 }
+
+.contact-message__error {
+  color: #e84118;
+  margin-bottom: 15px;
+}

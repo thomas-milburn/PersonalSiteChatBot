@@ -2,6 +2,8 @@ import React from 'react'
 import './App.css'
 import ChatSession from '../ChatSession/ChatSession'
 import ChatSessionContextProvider from '../ChatSessionContextProvider/ChatSessionContextProvider'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const App = (): React.ReactNode => {
   return (
@@ -9,6 +11,8 @@ const App = (): React.ReactNode => {
       <ChatSessionContextProvider>
         <ChatSession />
       </ChatSessionContextProvider>
+
+      <ToastContainer />
     </div>
   )
 }
