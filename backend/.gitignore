@@ -4,3 +4,4 @@ test.py
 .env.secret
 .env.local
 **/__pycache__/
+frontend_build_static/

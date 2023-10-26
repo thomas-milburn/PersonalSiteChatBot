@@ -3,7 +3,7 @@ import os
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from fastapi.templating import Jinja2Templates
+from starlette.staticfiles import StaticFiles
 from websockets.exceptions import ConnectionClosedOK
 
 import config
@@ -20,8 +20,6 @@ load_dotenv()
 
 # Access the variables using os.environ
 openai_api_key = os.environ.get("OPENAI_API_KEY")
-
-templates = Jinja2Templates(directory="templates")
 
 app = FastAPI()
 
@@ -91,3 +89,8 @@ async def websocket_endpoint(websocket: WebSocket):
                 type="error",
             )
             await websocket.send_json(resp.model_dump())
+
+
+# Mount the frontend static files if we are in deployment mode
+if config.config["PERSONAL_SITE_IS_DEVELOPMENT"] == "false":
+    app.mount("/", StaticFiles(directory="frontend_build_static/", html=True), name="static")
