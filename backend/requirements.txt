@@ -1,0 +1,5 @@
+fastapi[all]
+langchain
+openai
+tiktoken
+python-dotenv
