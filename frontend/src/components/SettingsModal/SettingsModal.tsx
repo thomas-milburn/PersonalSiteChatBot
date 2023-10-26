@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import type ReactModal from 'react-modal'
 import Modal from 'react-modal'
 import './SettingsModal.css'
 import Switch from 'react-switch'
+import { ChatSessionContext, type ChatSessionContextType } from '../ChatSessionContextProvider/ChatSessionContextProvider'
 
 interface Props {
   isModalOpen: boolean
@@ -33,7 +34,10 @@ const SettingsModal = ({
   isModalOpen,
   closeModal
 }: Props): React.ReactNode => {
-  const [toggle, setToggle] = useState<boolean>(false)
+  const {
+    showToolMessages,
+    setShowToolMessages
+  } = useContext<ChatSessionContextType>(ChatSessionContext)
   return (
     <Modal isOpen={isModalOpen} style={modalStyle}>
       <div className="setting-modal__content">
@@ -52,7 +56,7 @@ const SettingsModal = ({
         <div className="setting-modal__content__settings">
           <div className="setting-modal__content__settings_setting">
             <span>Show response from tools 🔧</span>
-            <Switch checked={toggle} onChange={setToggle} />
+            <Switch checked={showToolMessages} onChange={setShowToolMessages} />
           </div>
         </div>
 
