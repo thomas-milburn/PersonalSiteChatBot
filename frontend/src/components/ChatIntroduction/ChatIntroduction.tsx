@@ -14,8 +14,7 @@ const ChatIntroduction = (): React.ReactNode => {
       </div>
 
       <div className="chat-introduction__section chat-introduction__section--gray">
-        <p>The assistant can sometimes provide inaccurate information. To send a message to me for verification, click
-          the verify button next to the message</p>
+        <p>The assistant can sometimes provide inaccurate information. To send a message to me for verification, please ask the assistant to &quot;contact Thomas&quot;</p>
         <p>
           This site is protected by reCAPTCHA and the Google <a
           href="https://policies.google.com/privacy"
