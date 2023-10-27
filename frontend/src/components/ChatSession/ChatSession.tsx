@@ -30,7 +30,8 @@ const ChatSession = (): React.ReactNode => {
 
   // Create websocket connection on create
   useEffect(() => {
-    const socket = new WebSocket(`ws://${location.host}/chat`)
+    const wsProtocol = location.protocol === 'https:' ? 'wss' : 'ws'
+    const socket = new WebSocket(`${wsProtocol}://${location.host}/chat`)
     websocketConnectionRef.current = socket
 
     socket.addEventListener('open', () => {
